@@ -26,7 +26,7 @@ var phoneArray = []
 
 
 
-设置 username 和 secretkey  
+设置 username 和 secretkey  （短信服务商用的点淘短信）
 
 
 
