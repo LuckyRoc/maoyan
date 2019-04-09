@@ -2,7 +2,7 @@
 const superagent = require('superagent');
 const cheerio = require('cheerio');
 
-var phoneArray = ["13002562256", "15077825123"]
+var phoneArray = [""]
 
 function intervalFunc() {
     superagent.get('https://maoyan.com/films?sortId=2').end((err, res) => {
@@ -37,8 +37,8 @@ let getFilms = (res) => {
 
 function sendMessage(mobile) {
     var http = require('http');
-    var username = "yueke";
-    var secretkey = "2d4e42294fdd9f58399650e05298fd22";
+    var username = "";
+    var secretkey = "";
     
     var path = "/sms_token?ddtkey=" + username + "&secretkey=" + secretkey
         + "&mobile=" + mobile + "&content=Go"
@@ -52,6 +52,7 @@ function sendMessage(mobile) {
             'Content-Type': 'application/json'
         }
     };
+
     http.get(options, function (res) {
         var resData = "";
         res.on("data", function (data) {
