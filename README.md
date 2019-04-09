@@ -10,9 +10,42 @@ esprima
 
 ## Installation
 
+
+
 ```ruby
 npm install
 ```
+
+
+
+增加你需要发送短信的手机号
+
+```
+var phoneArray = []
+```
+
+
+
+设置 username 和 secretkey  
+
+
+
+```
+var username = "";
+var secretkey = "";
+```
+
+
+
+开始执行脚本 ~ 
+
+```
+node maoyan.js
+```
+
+
+
+
 
 ## Author
 
