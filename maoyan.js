@@ -15,7 +15,7 @@ function intervalFunc() {
     });
 }
 
-var timer = setInterval(intervalFunc, 10000);
+// var timer = setInterval(intervalFunc, 10000);
 
 let getFilms = (res) => {
     let $ = cheerio.load(res.text);
@@ -27,15 +27,41 @@ let getFilms = (res) => {
         }
     });
     if (isOn) {
-        for (const phone of phoneArray) {
-            sendMessage(phone)
-        }
+        // 发送短信和微信消息 二选一 就可以了 ~ 
+        
+        // 发送短信
+        // for (const phone of phoneArray) {
+        //     sendMessage(phone)
+        // }
+
+        // 发送微信消息
+        sendWx()
+
         clearInterval(timer)
     } else {
         console.log(new Date().getTime() + "：影片未上映....")
     }
 };
 
+
+function sendWx() {
+    var http = require('http');
+    
+    // 这里的key需要进行更换
+    var key = 'SCU48466Tf3f96d026cbcd4d4ab8f05fa7d04ee2c5cada058e0522'
+    var path =  '.send?text='
+    var text = '复仇者联盟4电影票已经开售啦，快去购票吧！'
+
+    http.get('http://sc.ftqq.com/' + key + path + text,function(data){
+        var str="";
+        data.on("data",function(chunk){
+            str+=chunk;
+        })
+        data.on("end",function(){
+            console.log("推送发送成功")
+        })
+    })
+}
 
 function sendMessage(mobile) {
     var http = require('http');
